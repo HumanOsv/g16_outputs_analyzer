@@ -50,7 +50,7 @@ for (0..$#files){
         my @columns_1N = ();
         my @columns_2N = ();
         my @columns_3N = ();
-        my @columns_4N = ();
+        my @columns_5N = ();
         #
         my $count_lines = 0;
         #
@@ -77,7 +77,7 @@ for (0..$#files){
                 # Rotational constants (GHZ):
                 if ( ($a_1=~/Low frequencies ---/gi ) ){
                         #
-                        push ( @columns_4N,$count_lines);
+                        push ( @columns_5N,$count_lines);
                 }
 
 
@@ -116,7 +116,7 @@ for (0..$#files){
                         push (@total_coords,"$tmp[2]\t$tmp[4]\t$tmp[5]\t$tmp[6]");
                 }
                 # Frecuencia
-                my @array_tmp = split (/\s+/,$Secuencias[$columns_4N[1]]);
+                my @array_tmp = split (/\s+/,$Secuencias[$columns_5N[1]]);
                 #
                 push(@array_Freq,$array_tmp[4]);
                 push(@array_energy,$energy);
@@ -130,6 +130,8 @@ for (0..$#files){
 
 my @array_energy_zero = ();
 for (my $i=0; $i < scalar (@array_energy); $i++){
+
+	 print " $array_files[$i] =>  $array_energy[$i] + $columns_4N[$i]\n";
 	my $sum = ($array_energy[$i] + $columns_4N[$i]);
 	push (@array_energy_zero,$sum);
 }
